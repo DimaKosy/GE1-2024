@@ -10,7 +10,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.z += speed * delta
+	var forward = Input.get_axis("move_backward", "move_forward")
+	var rot_con = Input.get_axis("turn_right", "turn_left")
+	#print(rot_con)
 	
-	rotate_y(deg_to_rad(rotSpeed) * delta) 
+	translate(Vector3(0,0,forward*delta*speed))
+	rotate_y(deg_to_rad(rotSpeed*rot_con)*delta)
 	pass
