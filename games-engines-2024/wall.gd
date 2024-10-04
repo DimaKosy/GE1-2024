@@ -2,7 +2,7 @@ extends Node3D
 
 @export var brick_scene:PackedScene
 @export var rows = 30
-@export var column = 3
+@export var column = 5
 @export var step = 5
 var rot_tower = 0
 
