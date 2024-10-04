@@ -13,7 +13,7 @@ func _ready() -> void:
 			var brick = brick_scene.instantiate()
 			rot_tower = 2*PI*(1.0/float(rows))
 			var ext_rot = (1.5*(col%2))
-			print(rot_tower)
+			
 			var xy = [step*sin(rot_tower*float(row+ext_rot)),step*cos(rot_tower*float(row+ext_rot))]
 			
 			
@@ -23,8 +23,13 @@ func _ready() -> void:
 			var r = randf()
 			var g = randf()
 			var b = randf()
+			print( Color(r,g,b,1))
+			var m = StandardMaterial3D.new()
+			m.albedo_color = Color(r,g,b,1)
+			var meshIns:MeshInstance3D = brick.get_node("MeshInstance3D")
+			meshIns.set_surface_override_material(0,m)
 			
-			brick.get_child(0).mesh.material.albedo_color = Color(r,g,b,1)
+			#brick.get_child(0).mesh.material = m
 			#print("%f:%f:%f" % [r,g,b])
 			add_child(brick)
 			#get_child(get_child_count()-1).get_child(0).mesh.material.albedo_color = Color(r,g,b,1)

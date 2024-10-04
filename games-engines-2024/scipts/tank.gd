@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends CharacterBody3D
 
 @export var speed = 10
 @export var rotSpeed = 180
@@ -9,11 +9,15 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var forward = Input.get_axis("move_backward", "move_forward")
 	var rot_con = Input.get_axis("turn_right", "turn_left")
 	#print(rot_con)
+	var facing = global_transform.basis.z
+	#Vector3(0,0,forward*delta*speed)
+	velocity = facing * forward * speed
+	move_and_slide()
 	
-	translate(Vector3(0,0,forward*delta*speed))
+	#translate()
 	rotate_y(deg_to_rad(rotSpeed*rot_con)*delta)
 	pass
