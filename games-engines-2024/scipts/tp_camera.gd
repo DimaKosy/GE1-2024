@@ -1,7 +1,7 @@
 extends Camera3D
 
 @export var player:Node3D
-@export var target:Vector3
+@export var target:Marker3D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,9 +11,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var t = target+player.global_position
-	var p = lerp(global_position,t,delta * 5)
+	
+	var p = lerp(global_position,target.global_position,delta * 4)
 	global_position = p
 	
 	look_at(player.global_position)
+	
+	
 	pass

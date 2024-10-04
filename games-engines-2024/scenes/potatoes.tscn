@@ -28,11 +28,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.548607, -1.45156)
 script = ExtResource("4_uy35k")
 brick_scene = ExtResource("5_xw1ms")
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player", "target")]
 transform = Transform3D(1, 0, 0, 0, 0.820561, 0.571559, 0, -0.571559, 0.820561, -3.65336, 8.20619, 10.2221)
 script = ExtResource("3_jvmte")
 player = NodePath("../CharacterBody3D/player")
-target = Vector3(0, 10, -10)
+target = NodePath("../CharacterBody3D/Target")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -61,3 +61,6 @@ skeleton = NodePath("../../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("BoxShape3D_p0dju")
+
+[node name="Target" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10)
