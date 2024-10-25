@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://xikju1fjvrap"]
+[gd_scene load_steps=17 format=3 uid="uid://xikju1fjvrap"]
 
 [ext_resource type="Material" uid="uid://vfmo788a36ey" path="res://material/green.tres" id="1_4papv"]
+[ext_resource type="Script" path="res://scipts/enemy.gd" id="1_wumsy"]
 [ext_resource type="Material" uid="uid://bpwo83fj7iro" path="res://material/blue.tres" id="2_65qg7"]
+[ext_resource type="Material" uid="uid://mvs1gu1iypb6" path="res://material/red.tres" id="2_tih3p"]
 [ext_resource type="Script" path="res://scipts/tank.gd" id="3_5tw20"]
 [ext_resource type="Script" path="res://scipts/tp_camera.gd" id="3_jvmte"]
 [ext_resource type="Script" path="res://wall.gd" id="4_uy35k"]
@@ -9,18 +11,44 @@
 [ext_resource type="Script" path="res://scipts/turret.gd" id="7_jjn6g"]
 [ext_resource type="PackedScene" uid="uid://drpedqt136k1k" path="res://scenes/bullet.tscn" id="8_l5lhe"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_0itej"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vhf2y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vym1b"]
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6v026"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a0wqp"]
 size = Vector2(100, 100)
 
-[sub_resource type="BoxMesh" id="BoxMesh_0itej"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_vhf2y"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_p0dju"]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Enemy" type="CharacterBody3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.988052, 0.5, 0)
+script = ExtResource("1_wumsy")
+target = NodePath("../CharacterBody3D")
+
+[node name="player" type="MeshInstance3D" parent="Enemy"]
+material_override = ExtResource("2_tih3p")
+mesh = SubResource("BoxMesh_0itej")
+skeleton = NodePath("../..")
+
+[node name="turret" type="MeshInstance3D" parent="Enemy/player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.55, 0.5)
+material_override = ExtResource("2_tih3p")
+mesh = SubResource("BoxMesh_vhf2y")
+skeleton = NodePath("../../..")
+script = ExtResource("7_jjn6g")
+bullet_scene = ExtResource("8_l5lhe")
+
+[node name="TurretEnd" type="Marker3D" parent="Enemy/player/turret"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
+shape = SubResource("BoxShape3D_vym1b")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.52296, 0.27167, -0.807904, 1.28249e-08, 0.947846, 0.318728, 0.852358, -0.166682, 0.495686, 0, 1.70446, 2.0682)
