@@ -48,7 +48,6 @@ transform = Transform3D(-0.486978, -0.857167, -0.16768, -0.325568, -1.4231e-08, 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="ground" type="MeshInstance3D" parent="StaticBody3D"]
-visible = false
 material_override = ExtResource("11_g562f")
 mesh = SubResource("PlaneMesh_00q4b")
 skeleton = NodePath("../..")

@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-[gd_scene load_steps=9 format=3 uid="uid://xikju1fjvrap"]
-
-[ext_resource type="Material" path="res://material/green.tres" id="1_myk65"]
-[ext_resource type="Material" path="res://material/blue.tres" id="2_hsqkj"]
-[ext_resource type="Script" path="res://scipts/tank.gd" id="3_k0iqo"]
-[ext_resource type="Script" path="res://wall.gd" id="4_uy35k"]
-[ext_resource type="PackedScene" path="res://scenes/brick.tscn" id="5_xw1ms"]
-=======
 [gd_scene load_steps=15 format=3 uid="uid://d2cnv7v7huh3k"]
 
 [ext_resource type="Script" path="res://scenes/TPCamera.gd" id="1_1bql5"]
@@ -17,17 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://buu3aq61omx1k" path="res://brick.tscn" id="5_nw2f7"]
 [ext_resource type="PackedScene" uid="uid://c1bnq83851e46" path="res://bullet.tscn" id="6_ngcvm"]
 [ext_resource type="Script" path="res://scenes/tower.gd" id="8_57hm3"]
->>>>>>> ca0d7d86225ba264ab8e4164cb27a803eab7b9c1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a0wqp"]
 material = ExtResource("1_myk65")
 size = Vector2(100, 100)
 
-<<<<<<< HEAD
-[sub_resource type="BoxMesh" id="BoxMesh_0itej"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_vhf2y"]
-=======
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_307sh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dedr2"]
@@ -36,38 +21,10 @@ size = Vector2(100, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0ug6i"]
 size = Vector3(0.1, 0.1, 1)
->>>>>>> ca0d7d86225ba264ab8e4164cb27a803eab7b9c1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yo8sf"]
 size = Vector3(0.1, 0.1, 1)
 
-<<<<<<< HEAD
-[node name="Ground" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_a0wqp")
-
-[node name="player" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.96599)
-material_override = ExtResource("2_hsqkj")
-mesh = SubResource("BoxMesh_0itej")
-script = ExtResource("3_k0iqo")
-
-[node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 0.820561, 0.571559, 0, -0.571559, 0.820561, -0.393362, 7.70619, 8.25614)
-
-[node name="turret" type="MeshInstance3D" parent="player"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.55, 0.5)
-material_override = ExtResource("2_hsqkj")
-mesh = SubResource("BoxMesh_vhf2y")
-skeleton = NodePath("../..")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.52296, 0.27167, -0.807904, 1.28249e-08, 0.947846, 0.318728, 0.852358, -0.166682, 0.495686, 0, 1.70446, 2.0682)
-
-[node name="wall" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.548607, -1.45156)
-script = ExtResource("4_uy35k")
-brick_scene = ExtResource("5_xw1ms")
-=======
 [node name="root" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target", "player")]
@@ -138,4 +95,3 @@ brick_scene = ExtResource("5_nw2f7")
 radius = 5.0
 elements = 22
 brick_size = 1.0
->>>>>>> ca0d7d86225ba264ab8e4164cb27a803eab7b9c1
