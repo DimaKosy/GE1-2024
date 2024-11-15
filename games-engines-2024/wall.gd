@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var brick_scene:PackedScene
+<<<<<<< HEAD
 @export var rows = 30
 @export var column = 5
 @export var step = 5
@@ -28,9 +29,35 @@ func _ready() -> void:
 			#print("%f:%f:%f" % [r,g,b])
 			add_child(brick)
 			#get_child(get_child_count()-1).get_child(0).mesh.material.albedo_color = Color(r,g,b,1)
+=======
+@export var rows = 10
+@export var cols = 10
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for row in range(rows):
+		for col in range(cols):
+			var brick = brick_scene.instantiate()
+			brick.name = "brick"
+			add_child(brick)
+
+			var pos = Vector3(col, row, 0)
+			brick.position = pos
+			
+			var m = StandardMaterial3D.new()
+			var h = ((row * cols) + col) / (float)(rows * cols)
+			m.albedo_color = Color.from_hsv(h, 1, 1)
+			var mesh:MeshInstance3D = brick.get_node("MeshInstance3D")
+			mesh.set_surface_override_material(0, m)
+	
+>>>>>>> 645caca6489b24acfc84f74c3d3addfc1f3e775a
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+<<<<<<< HEAD
 func _process(_delta: float) -> void:
+=======
+func _process(delta: float) -> void:
+>>>>>>> 645caca6489b24acfc84f74c3d3addfc1f3e775a
 	pass
